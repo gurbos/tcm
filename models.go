@@ -1,5 +1,12 @@
 package tcm
 
+import "encoding/json"
+
+type IJSON interface {
+	ToJSON() ([]byte, error)
+	FromJSON() error
+}
+
 // ProductLine represents the type of information available for a given product line.
 // It maps to a record in a database table.
 type ProductLine struct {
@@ -8,6 +15,16 @@ type ProductLine struct {
 	Name      string `gorm:"type:varchar(25);unique;not null"`
 	SetCount  uint   `gorm:"not null"`
 	CardCount uint   `gorm:"not null"`
+}
+
+// ToJSON implements the corresponding IJSON interface method for ProductLine model
+func (pl *ProductLine) ToJSON() ([]byte, error) {
+	return json.Marshal(pl)
+}
+
+// FromJSON implements the corresponding IJSON interface method for ProductLine model
+func (pl *ProductLine) FromJSON(data []byte) error {
+	return json.Unmarshal(data, pl)
 }
 
 // SetInfo represents the type of information available for a given card set.
@@ -20,6 +37,16 @@ type SetInfo struct {
 	CardCount     uint   `gorm:"not null"`
 	ProductLineID uint
 	ProductLine   ProductLine `gorm:"foreignKey:ProductLineID"` // Defines a "Belongs To" relationship with ProductLine model
+}
+
+// ToJSON implements the corresponding IJSON interface method for SetInfo model
+func (si *SetInfo) ToJSON() ([]byte, error) {
+	return json.Marshal(si)
+}
+
+// FromJSON implements the corresponding IJSON interface method for SetInfo model
+func (si *SetInfo) FromJSON(data []byte) error {
+	return json.Unmarshal(data, si)
 }
 
 // CardInfo represents the type of information available for a given card.
@@ -44,4 +71,14 @@ type CardInfo struct {
 	ProductLineID uint
 	SetInfo       SetInfo     `gorm:"foreignKey:SetID"` // Defines a "Belongs To" relationship with SetInfo model
 	ProductLine   ProductLine `gorm:"foreignKey:ProductLineID"`
+}
+
+// ToJSON implements the corresponding IJSON interface method for CardInfo model
+func (ci *CardInfo) ToJSON() ([]byte, error) {
+	return json.Marshal(ci)
+}
+
+// FromJSON implements the corresponding IJSON interface method for CardInfo model
+func (ci *CardInfo) FromJSON(data []byte) error {
+	return json.Unmarshal(data, ci)
 }
