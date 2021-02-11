@@ -1,4 +1,4 @@
-package tcm
+package tcmodels
 
 import "encoding/json"
 
