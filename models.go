@@ -11,8 +11,8 @@ type IJSON interface {
 // It maps to a record in a database table.
 type ProductLine struct {
 	ID        uint   `gorm:";primaryKey;autoIncrement"`
-	Title     string `gorm:"type:varchar(25);unique;not null"`
 	Name      string `gorm:"type:varchar(25);unique;not null"`
+	URLName   string `gorm:"type:varchar(25);unique;not null"`
 	SetCount  uint   `gorm:"not null"`
 	CardCount uint   `gorm:"not null"`
 }
@@ -32,8 +32,8 @@ func (pl *ProductLine) FromJSON(data []byte) error {
 type SetInfo struct {
 	// Model
 	ID            uint   `gorm:"primaryKey;autoIncrement"`
-	Title         string `gorm:"type:varchar(70);unique;not null;"`
-	Name          string `gorm:"type:varchar(75);unique;not null"`
+	Name          string `gorm:"type:varchar(70);unique;not null;"`
+	URLName       string `gorm:"type:varchar(75);unique;not null"`
 	CardCount     uint   `gorm:"not null"`
 	ProductLineID uint
 	ProductLine   ProductLine `gorm:"foreignKey:ProductLineID"` // Defines a "Belongs To" relationship with ProductLine model
