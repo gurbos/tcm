@@ -52,7 +52,7 @@ func (si *SetInfo) FromJSON(data []byte) error {
 // CardInfo represents the type of information available for a given card.
 // It maps to a record in a database table.
 type CardInfo struct {
-	ID            uint    `gorm:";unique;autoIncrement"`
+	ID            uint    `gorm:"primaryKey;unique;autoIncrement"`
 	Number        string  `gorm:"type:varchar(15);primaryKey"`
 	Attack        string  `gorm:"type:varchar(5)"`
 	Attribute     string  `gorm:"type:varchar(15)"` // (e.g. Earth, Fire, Water, etc..)
