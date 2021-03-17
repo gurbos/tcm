@@ -51,7 +51,7 @@ func (si *SetInfo) FromJSON(data []byte) error {
 
 // CardInfo represents the type of information available for a given card.
 // It maps to a record in a database table.
-type CardInfo struct {
+type YuGiOhCardInfo struct {
 	ID            uint   `gorm:"primaryKey;unique;autoIncrement"`
 	Number        string `gorm:"type:varchar(15);primaryKey"`
 	Name          string `gorm:"type:varchar(100);primaryKey"`
