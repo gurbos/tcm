@@ -52,23 +52,22 @@ func (si *SetInfo) FromJSON(data []byte) error {
 // CardInfo represents the type of information available for a given card.
 // It maps to a record in a database table.
 type CardInfo struct {
-	ID            uint    `gorm:"primaryKey;unique;autoIncrement"`
-	Number        string  `gorm:"type:varchar(15);primaryKey"`
-	Name          string  `gorm:"type:varchar(100);primaryKey"`
-	URLName       string  `gorm:"type:varchar(110);not null"`
-	Attack        string  `gorm:"type:varchar(5)"`
-	Attribute     string  `gorm:"type:varchar(15)"` // (e.g. Earth, Fire, Water, etc..)
-	CardType      string  `gorm:"type:varchar(40)"`
-	CardTypeB     string  `gorm:"type:varchar(40);"` // Specific type of monster, spell, or trap (e.g. Effect Monster, Ritual Monster)
-	Defense       string  `gorm:"type:varchar(5)"`
-	LinkRating    string  `gorm:"type:varchar(1)"`
-	LinkArrows    string  `gorm:"type:varchar(70)"` // Contains one or more comma separated string values
-	Level         string  `gorm:"type:varchar(4)"`
-	MonsterType   string  `gorm:"type:varchar(50)"`
-	Rarity        string  `gorm:"type:varchar(25);primaryKey"`
-	MarketPrice   float32 `gorm:"type:float(2) unsigned;not null"`
-	Description   string  `gorm:"type:text"`
-	SetID         uint    `gorm:"primaryKey"`
+	ID            uint   `gorm:"primaryKey;unique;autoIncrement"`
+	Number        string `gorm:"type:varchar(15);primaryKey"`
+	Name          string `gorm:"type:varchar(100);primaryKey"`
+	URLName       string `gorm:"type:varchar(110);not null"`
+	Attack        string `gorm:"type:varchar(5)"`
+	Attribute     string `gorm:"type:varchar(15)"` // (e.g. Earth, Fire, Water, etc..)
+	CardType      string `gorm:"type:varchar(40)"`
+	CardTypeB     string `gorm:"type:varchar(40);"` // Specific type of monster, spell, or trap (e.g. Effect Monster, Ritual Monster)
+	Defense       string `gorm:"type:varchar(5)"`
+	LinkRating    string `gorm:"type:varchar(1)"`
+	LinkArrows    string `gorm:"type:varchar(70)"` // Contains one or more comma separated string values
+	Level         string `gorm:"type:varchar(4)"`
+	MonsterType   string `gorm:"type:varchar(50)"`
+	Rarity        string `gorm:"type:varchar(25);primaryKey"`
+	Description   string `gorm:"type:text"`
+	SetID         uint   `gorm:"primaryKey"`
 	ProductLineID uint
 	SetInfo       SetInfo     `gorm:"foreignKey:SetID"` // Defines a "Belongs To" relationship with SetInfo model
 	ProductLine   ProductLine `gorm:"foreignKey:ProductLineID"`
