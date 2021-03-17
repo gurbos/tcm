@@ -74,11 +74,11 @@ type YuGiOhCardInfo struct {
 }
 
 // ToJSON implements the corresponding IJSON interface method for CardInfo model
-func (ci *CardInfo) ToJSON() ([]byte, error) {
+func (ci *YuGiOhCardInfo) ToJSON() ([]byte, error) {
 	return json.Marshal(ci)
 }
 
 // FromJSON implements the corresponding IJSON interface method for CardInfo model
-func (ci *CardInfo) FromJSON(data []byte) error {
+func (ci *YuGiOhCardInfo) FromJSON(data []byte) error {
 	return json.Unmarshal(data, ci)
 }
