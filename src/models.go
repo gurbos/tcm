@@ -36,7 +36,7 @@ type SetInfo struct {
 	URLName       string `gorm:"type:varchar(75);unique;not null"`
 	CardCount     uint   `gorm:"not null"`
 	ProductLineID uint
-	ProductLine   ProductLine `gorm:"foreignKey:ProductLineID"` // Defines a "Belongs To" relationship with ProductLine model
+	ProductLine   ProductLine //`gorm:"foreignKey:ProductLineID"` // Defines a "Belongs To" relationship with ProductLine model
 }
 
 // ToJSON implements the corresponding IJSON interface method for SetInfo model
